@@ -1,0 +1,43 @@
+﻿Model Interpretation and Business Impact Report 
+
+
+This project aimed to predict wine quality based on physicochemical properties, following a structured workflow from data cleaning to model evaluation and deployment.
+
+
+Data Cleaning
+The dataset was first examined and check for missing values and duplicates, with minimal correction required (937 duplicated data was found and removed.). Overall, these actions were aimed at preparing a clean and reliable dataset for further analysis.
+
+
+Exploratory Data Analysis (EDA) and Scaling Objectives
+Univariate analysis of all the numerical feature was done by ploting histogram of each numeric columns. This was done to check the distribution of each numerical features, and from there outlier and skewness of the each features were spotted. Most of all the features were rightly skewed, pH, alcohol is slightly moderately skewed. 
+Bivariate analysis was done to examine the correlation of each feature with the target variable (quality).This was done using heatmap (visual). The map shows that alcohol, chlorides has high correlation with quality, while volatile acidity, total sulfur dioxide,pH, residual sugar has slightly high correlation. Citric acid and free sulfur dioxide and sulphate has extremely low value, this can be drop based on advice from domain expert or feature engineer can be done on it.
+
+
+Preprocessing 
+The target feature (quantity) was mapped in to category map quality column to binary values [ 9- Best, 8-Good, 7-Good, 6-Average, 5-Average, 4-Bad, 3-Bad]
+The data was split into features x and target y that is features and target. Features were standardized to ensure fair  weighting, and the dataset was split into training and testing subsets to evaluate generalization. 
+
+
+Multiple models, including Logistic Regression, Random Forest, and Gradient Boosting, were
+ trained to classify wines as “Good” or “Bad.” Among these, the Random Forest achieved the best
+ performance, balancing accuracy and interpretability. Evaluation metrics such as accuracy,
+ precision, recall, and F1-score were computed. The model achieved an accuracy of approximately
+ 85%, indicating strong predictive capability. A closer look at class-specific metrics revealed that the
+ model was more precise when predicting “Good” wines, meaning that wines labeled as “Good”
+ were genuinely of higher quality, with few false positives. However, recall for “Bad” wines was
+ slightly higher, implying that the model captured most of the low-quality samples, though at the
+ expense of some misclassification of good wines. Feature importance analysis revealed that
+ alcohol content was the most significant determinant of quality, showing a strong positive influence.
+ Volatile acidity had a negative impact, as higher levels often produce unpleasant aromas.
+ Sulphates and citric acid contributed positively, enhancing wine structure and freshness. Residual
+ sugar and density had weaker, non-linear effects. These insights align with chemical expectations
+ and support the model’s credibility. From a business perspective, these findings are highly valuable
+ to wine producers. By focusing on controllable factors such as alcohol levels and volatile acidity
+ during fermentation, producers can improve consistency and increase the proportion of
+ premium-quality wines. Reducing high volatile acidity through better fermentation management can
+ prevent spoilage, while optimizing sulphate and citric acid levels can enhance preservation and
+ taste. This leads to higher customer satisfaction, fewer rejections, and improved profit margins. In
+ deployment, the model can serve as a decision-support tool, allowing producers to assess wine
+ quality early in the production process. Integrating it into a monitoring dashboard enables proactive
+ quality control. Overall, the model provides actionable insights that bridge chemistry and business
+ strategy, helping producers maintain consistent quality and achieve higher profitability.
